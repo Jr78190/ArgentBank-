@@ -1,81 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { editUsername } from '../redux/actions/actionUser';
+import React, { useState } from "react";
 import '../css/main.css';
 
 function UserProfile() {
-    const token = useSelector((state) => state.auth.token);
-    const userData = useSelector((state) => state.user.profile);
-    const [newUsername, setNewUsername] = useState(userData?.username || '');
-    const [firstName, setFirstName] = useState(userData?.firstName || '');
-    const [lastName, setLastName] = useState(userData?.lastName || '');
-    const [errorMessage, setErrorMessage] = useState('');
+    // État initial pour les données utilisateur fictives
+    const [newUsername, setNewUsername] = useState('JohnDoe');
+    const [firstName, setFirstName] = useState('John');
+    const [lastName, setLastName] = useState('Doe');
     const [isEditing, setIsEditing] = useState(false); 
-    const dispatch = useDispatch();
+    const [errorMessage, setErrorMessage] = useState('');
 
-    useEffect(() => {
-        const fetchUserProfile = async () => {
-            try {
-                const response = await fetch('http://localhost:3001/api/v1/user/profile', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`,
-                    },
-                });
-                if (response.ok) {
-                    const data = await response.json();
-                    const { firstName, lastName, userName } = data.body;
-                    
-                    setFirstName(firstName);
-                    setLastName(lastName);
-                    setNewUsername(userName);
-                    
-                    dispatch(editUsername(userName));
-                } else {
-                    console.error("Échec de la récupération du profil");
-                }
-            } catch (error) {
-                console.error("Erreur :", error);
-            }
-        };
-        
-        fetchUserProfile();
-    }, [token, dispatch]);
-
-    const handleSubmit = async (event) => {
+    // Fonction pour soumettre les modifications (ici sans backend)
+    const handleSubmit = (event) => {
         event.preventDefault();
-        try {
-            const response = await fetch('http://localhost:3001/api/v1/user/profile', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify({ userName: newUsername }),
-            });
-            if (response.ok) {
-                const data = await response.json();
-                dispatch(editUsername(data.body.userName));
-                setIsEditing(false); 
-            } else {
-                setErrorMessage("Impossible de mettre à jour le nom d'utilisateur");
-            }
-        } catch (error) {
-            setErrorMessage("Erreur de connexion au serveur");
-            console.error("Erreur :", error);
-        }
+        // Simuler une validation ou sauvegarde des données locales
+        setIsEditing(false); // On quitte le mode édition
     };
 
-    const handleEdit = (event) => {
-        event.preventDefault(); // Empêche le rechargement de la page
-        setIsEditing(true); // Passe en mode édition
+    // Fonction pour activer le mode édition
+    const handleEdit = () => {
+        setIsEditing(true); // On passe en mode édition
     };
     
-
+    // Fonction pour annuler l'édition
     const handleCancel = () => {
-        setIsEditing(false); // Sortir du mode édition
-        setNewUsername(userData?.username ); 
+        setIsEditing(false); // On quitte le mode édition
+        setNewUsername('JohnDoe'); // On remet l'ancien nom d'utilisateur
     };
 
     return (
@@ -86,7 +35,7 @@ function UserProfile() {
                     <input 
                         type="text"
                         value={newUsername}
-                        onChange={(e) => setNewUsername(e.target.value)}
+                        onChange={(e) => setNewUsername(e.target.value)} // Mettre à jour le nom d'utilisateur localement
                         disabled={!isEditing} 
                     />
                 </label>
