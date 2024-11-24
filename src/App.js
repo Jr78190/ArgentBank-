@@ -6,7 +6,7 @@ import Profil from '../src/pages/Profil/Profil';
 
 function App() {
   return (
-    <Router basename="/ArgentBank-Frontend">
+    <Router basename="/ArgentBank-">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
