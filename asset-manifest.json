@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ArgentBank-/static/css/main.130c158d.css",
-    "main.js": "/ArgentBank-/static/js/main.94845000.js",
+    "main.js": "/ArgentBank-/static/js/main.e531e343.js",
     "static/js/488.50442ee8.chunk.js": "/ArgentBank-/static/js/488.50442ee8.chunk.js",
     "static/media/fa-solid-900.ttf": "/ArgentBank-/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
     "static/media/fa-brands-400.ttf": "/ArgentBank-/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
@@ -18,11 +18,11 @@
     "static/media/fa-v4compatibility.woff2": "/ArgentBank-/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
     "index.html": "/ArgentBank-/index.html",
     "main.130c158d.css.map": "/ArgentBank-/static/css/main.130c158d.css.map",
-    "main.94845000.js.map": "/ArgentBank-/static/js/main.94845000.js.map",
+    "main.e531e343.js.map": "/ArgentBank-/static/js/main.e531e343.js.map",
     "488.50442ee8.chunk.js.map": "/ArgentBank-/static/js/488.50442ee8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.130c158d.css",
-    "static/js/main.94845000.js"
+    "static/js/main.e531e343.js"
   ]
 }
